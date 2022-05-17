@@ -1,0 +1,25 @@
+
+<div class="row" style="margin: auto;
+  width: 50%;
+
+  padding: 10px; ">
+
+    <div class="well">
+        {{ form_start(form) }}
+        <legend><i  aria-hidden="true"></i> Description du job cron</legend>
+        <div style="width: 50% ;height:10%">{{ form_widget(form.name) }}</div>
+        <legend><i  aria-hidden="true"></i> Expression</legend>
+        <div>{{ form_widget(form.expression) }}</div>
+        <legend><i  aria-hidden="true"></i> Email destinataire</legend>
+        <div>{{ form_widget(form.emailadmincron) }}</div>
+
+        <legend><i  aria-hidden="true"></i> La commande à exécuter </legend>
+        <div>{{ form_widget(form.scriptExec) }}</div>
+        <legend><i  aria-hidden="true"></i> Le créateur </legend>
+        <div>{{ app.user.username }}</div>
+        <br>
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+        <a class="btn btn-warning" href="{{ path('app_jobCron_index') }}">Retour</a>
+        {{ form_end(form) }}
+    </div></div>
+

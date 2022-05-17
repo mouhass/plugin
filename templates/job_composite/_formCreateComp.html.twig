@@ -1,0 +1,32 @@
+
+<div class="row" style="margin: auto;
+  width: 50%;
+
+  padding: 10px; ">
+
+    <div class="well">
+        {{ form_start(form) }}
+        <legend><i  aria-hidden="true"></i> Nom du job cron</legend>
+        <div>{{ form_widget(form.name) }}</div>
+        <legend><i  aria-hidden="true"></i> Expression</legend>
+        <div>{{ form_widget(form.expression) }}</div>
+
+
+        <legend><i  aria-hidden="true"></i> Email du destinataire </legend>
+
+        <div>
+            {{ form_widget(form.emailadmin) }}
+        </div>
+
+
+
+        <legend><i  aria-hidden="true"></i> Liste des sous jobs </legend>
+        <div>{{ form_widget(form.listSousJobs) }}</div>
+        <legend><i  aria-hidden="true"></i> Le créateur </legend>
+
+        <div>{{ app.user.username }}</div>
+
+        <br>
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+    </div></div>

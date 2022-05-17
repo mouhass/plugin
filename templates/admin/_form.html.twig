@@ -1,0 +1,22 @@
+
+    <div class="row" style="margin: auto;
+  width: 50%;
+
+  padding: 10px; ">
+
+        <div class="well">
+            {{ form_start(form) }}
+            <legend><i aria-hidden="true"></i> Nom de l'administrateur</legend>
+                <div >{{ form_widget(form.name) }}</div>
+            <br><br>
+            <legend><i  aria-hidden="true"></i> Mot de passe</legend>
+            <div>{{ form_widget(form.password) }}</div>
+            <br><br>
+            <legend><i  aria-hidden="true"></i> Email </legend>
+            <div >{{ form_widget(form.email) }}</div>
+           <br><br>
+            <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            <a class="btn btn-warning" href="{{ path('app_admin_index') }}">Retour</a>
+            {{ form_end(form) }}
+
+        </div></div>
