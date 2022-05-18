@@ -1,0 +1,27 @@
+{
+    "name": "batch-jobs/batch-jobs-bundle",
+    "description": "This bundle helps the administrator to monitor his jobs",
+    "type": "symfony-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "BatchJobs\\BatchJobsBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mh"
+        }
+    ],
+    "require": {
+		"php": "^7.1.3"
+	
+	}
+	
+	 "repositories": [
+        {
+            "type": "path",
+            "url": "BatchJobsBundle"
+        }
+    ]
+}
