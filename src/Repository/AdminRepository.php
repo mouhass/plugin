@@ -73,4 +73,10 @@ class AdminRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function exportAdmin(){
+        return $this->createQueryBuilder('a')
+            ->getQuery()
+            ->getResult();
+    }
 }

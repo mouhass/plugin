@@ -43,10 +43,7 @@ class Admin implements UserInterface,\Serializable
      */
     private $jobCompositeCreated;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=JobCron::class, mappedBy="listDesination")
-     */
-    private $jobCronCreated;
+
 
     /**
      * @ORM\Column(type="array")
@@ -59,8 +56,8 @@ class Admin implements UserInterface,\Serializable
     {
         $this->jobCrons = new ArrayCollection();
         $this->jobComposites = new ArrayCollection();
-        $this->jobCompositeCreated = new ArrayCollection();
-        $this->jobCronCreated = new ArrayCollection();
+
+
     }
 public function __toString()
 {
@@ -107,68 +104,14 @@ public function __toString()
         return $this;
     }
 
-    /**
-     * @return Collection<int, JobCron>
-     */
 
 
 
 
 
 
-    /**
-     * @return Collection<int, JobComposite>
-     */
-    public function getJobCompositeCreated(): Collection
-    {
-        return $this->jobCompositeCreated;
-    }
 
-    public function addJobCompositeCreated(JobComposite $jobCompositeCreated): self
-    {
-        if (!$this->jobCompositeCreated->contains($jobCompositeCreated)) {
-            $this->jobCompositeCreated[] = $jobCompositeCreated;
-            $jobCompositeCreated->addListDestination($this);
-        }
 
-        return $this;
-    }
-
-    public function removeJobCompositeCreated(JobComposite $jobCompositeCreated): self
-    {
-        if ($this->jobCompositeCreated->removeElement($jobCompositeCreated)) {
-            $jobCompositeCreated->removeListDestination($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, JobCron>
-     */
-    public function getJobCronCreated(): Collection
-    {
-        return $this->jobCronCreated;
-    }
-
-    public function addJobCronCreated(JobCron $jobCronCreated): self
-    {
-        if (!$this->jobCronCreated->contains($jobCronCreated)) {
-            $this->jobCronCreated[] = $jobCronCreated;
-            $jobCronCreated->addListDesination($this);
-        }
-
-        return $this;
-    }
-
-    public function removeJobCronCreated(JobCron $jobCronCreated): self
-    {
-        if ($this->jobCronCreated->removeElement($jobCronCreated)) {
-            $jobCronCreated->removeListDesination($this);
-        }
-
-        return $this;
-    }
 
     public function getRoles()
     {

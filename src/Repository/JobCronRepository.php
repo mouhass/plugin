@@ -81,19 +81,90 @@ class JobCronRepository extends ServiceEntityRepository
     public function findSpecific(JobCronSearch $search):Query{
          $query = $this->findVisibleQuery();
          if($search->getCode() and $search->getCode()!=""){
-                $query = $query->where('p.code = :code')
+                $query->where('p.code = :code')
                     ->setParameter('code',$search->getCode());
          }
          if($search->getCommand() and $search->getCommand()!=""){
-             $query = $query->where('p.scriptExec = :command')
+             $query->where('p.scriptExec = :command')
                  ->setParameter('command',$search->getCommand());
          }
-         if($search->getCode()!="" and $search->getCommand()!=""){
-             $query = $query->where('p.code = :code and p.scriptExec = :command ')
 
+        if($search->getActif() and $search->getActif()!=""){
+            $query->where('p.actif = :actif')
+                ->setParameter('actif',$search->getActif());
+        }
+
+        if($search->getName() and $search->getName()!=""){
+            $query->where('p.name like :name')
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+
+
+
+
+        if($search->getCode()!="" and $search->getActif()!=""){
+            $query->where('p.code = :code  and p.actif = :actif ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('actif',$search->getActif());
+        }
+
+        if($search->getCommand()!="" and $search->getActif()!=""){
+            $query->where('p.scriptExec = :command  and p.actif = :actif ')
+                ->setParameter('command',$search->getCommand())
+                ->setParameter('actif',$search->getActif());
+        }
+
+        if($search->getCode()!="" and $search->getName()!=""){
+            $query->where('p.code = :code  and p.name like :name ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+        if($search->getCommand()!="" and $search->getName()!=""){
+            $query->where('p.scriptExec = :command  and p.name like :name ')
+                ->setParameter('command',$search->getCommand())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+        if($search->getCommand()!="" and $search->getCode()!=""){
+            $query->where('p.scriptExec = :command  and p.code = :code ')
+                ->setParameter('command',$search->getCommand())
+                ->setParameter('code', $search->getCode());
+        }
+        if($search->getActif()!="" and $search->getName()!=""){
+            $query->where('p.actif = :actif  and p.name like :name ')
+                ->setParameter('actif',$search->getActif())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+
+
+
+
+        if($search->getCode()!="" and $search->getCommand()!="" and $search->getName()!=""){
+            $query->where('p.code = :code and p.scriptExec = :command  and p.name like :name ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('command',$search->getCommand())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+        if($search->getCode()!="" and $search->getCommand()!="" and $search->getActif()!=""){
+             $query->where('p.code = :code and p.scriptExec = :command  and p.actif = :actif ')
                  ->setParameter('code',$search->getCode())
-                 ->setParameter('command',$search->getCommand());
+                 ->setParameter('command',$search->getCommand())
+                 ->setParameter('actif',$search->getActif());
          }
+
+
+        if($search->getCode()!="" and $search->getCommand()!="" and $search->getName()!="" and $search->getActif()>=0 and $search->getActif()<=1){
+            $query->where('p.code = :code and p.scriptExec = :command  and p.name like :name ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('command',$search->getCommand())
+                ->setParameter('name','%'.$search->getName().'%')
+                ->setParameter('actif',$search->getActif());
+        }
+
+
+
          return  $query->getQuery();
     }
 

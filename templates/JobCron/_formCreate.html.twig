@@ -7,8 +7,11 @@
     <div class="well">
         {{ form_start(form) }}
         <legend><i  aria-hidden="true"></i> Description du job cron</legend>
+        <div style="width: 50% ;height:10%">{{ form_widget(form.description) }}</div>
+        <legend><i  aria-hidden="true"></i> Nom du job cron</legend>
         <div style="width: 50% ;height:10%">{{ form_widget(form.name) }}</div>
-        <legend><i  aria-hidden="true"></i> Expression</legend>
+
+        <legend><i  aria-hidden="true"></i> Expression cron</legend>
         <div>{{ form_widget(form.expression) }}</div>
         <legend><i  aria-hidden="true"></i> Email destinataire</legend>
         <div>{{ form_widget(form.emailadmincron) }}</div>

@@ -10,6 +10,9 @@
         <div>{{ JobCron.code }}</div>
 
         <legend><i aria-hidden="true"></i> Description du job cron</legend>
+        <div>{{ form_widget(form.description) }}</div>
+
+        <legend><i aria-hidden="true"></i> Nom du job cron</legend>
         <div>{{ form_widget(form.name) }}</div>
         <legend><i  aria-hidden="true"></i> Expression</legend>
         <div>{{ form_widget(form.expression) }}</div>
@@ -18,7 +21,7 @@
         <legend><i  aria-hidden="true"></i> Actif </legend>
         <div>{{ form_widget(form.actif) }}</div>
         <legend><i  aria-hidden="true"></i> Le créateur </legend>
-        <div>{{ JobCron.createdBy }}</div>
+        <div>{{ app.user.name }}</div>
         <legend><i  aria-hidden="true"></i> La commande à exécuter </legend>
         <div>{{ form_widget(form.scriptExec) }}</div>
         <br>

@@ -15,7 +15,7 @@
             <legend><i class="fa fa-lock" aria-hidden="true"></i> Actif </legend>
             <div>{{ form_widget(form.actif) }}</div>
             <legend><i class="fa fa-lock" aria-hidden="true"></i> Le créateur </legend>
-            <div>{{ form_widget(form.createdBy) }}</div>
+            <div>{{ app.user.name }}</div>
             <legend><i class="fa fa-lock" aria-hidden="true"></i> La commande à exécuter </legend>
             <div>{{ form_widget(form.scriptExec) }}</div>
             <br>

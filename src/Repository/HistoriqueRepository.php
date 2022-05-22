@@ -75,4 +75,15 @@ class HistoriqueRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByDate(\DateTime  $dateTime){
+
+        return $this->createQueryBuilder('h')
+            ->andWhere(' h.createdAt < :da')
+            ->setParameter('da', $dateTime)
+            ->orderBy('h.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }

@@ -65,11 +65,11 @@ class HistoriqueController extends AbstractController
     }
 
 
-    public function delete(Request $request, Historique $historique, HistoriqueRepository $historiqueRepository): Response
+    public function delete( Historique $historique, HistoriqueRepository $historiqueRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$historique->getId(), $request->request->get('_token'))) {
+       // if ($this->isCsrfTokenValid('delete'.$historique->getId(), $request->request->get('_token'))) {
             $historiqueRepository->remove($historique);
-        }
+      //  }
 
         return $this->redirectToRoute('app_historique_index', [], Response::HTTP_SEE_OTHER);
     }

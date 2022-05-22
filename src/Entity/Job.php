@@ -35,6 +35,146 @@ class Job
      * @ORM\Column(type="string")
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $description;
+
+
+
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $code;
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $state;
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     * @return Job
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $actif;
+
+    /**
+     * @return mixed
+     */
+    public function getActif()
+    {
+        return $this->actif;
+    }
+
+    /**
+     * @param mixed $actif
+     * @return Job
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param mixed $state
+     * @return Job
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getExpression()
+    {
+        return $this->expression;
+    }
+
+    /**
+     * @param mixed $expression
+     * @return Job
+     */
+    public function setExpression($expression)
+    {
+        $this->expression = $expression;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $expression;
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return Job
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+
+
+
+
     public function getName(): ?string
     {
         return $this->name;
@@ -45,6 +185,8 @@ class Job
 
         return $this;
     }
+
+
 
 
 

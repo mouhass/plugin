@@ -16,7 +16,8 @@ class CreateNewJobCronType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextareaType::class, ['required'=>false])
+            ->add('description', TextareaType::class, ['required'=>false])
+            ->add('name',TextType::class,['required'=>false])
             ->add('expression', TextType::class,['required'=>false])
             ->add('emailadmincron',TextType::class,['required'=>false])
 //            ->add('nextDateExec',DateTimeType::class,['required'=>false])

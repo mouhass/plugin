@@ -155,7 +155,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        {% if app.user.roles == ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'] %}
+        {% if app.user.roles == [ 'ROLE_SUPER_ADMIN'] %}
         <li class="nav-item ">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
@@ -234,18 +234,7 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -352,18 +341,18 @@
 
                     <!-- Earnings (Monthly) Card Example -->
                     <div  style="width: 100%">
-                        <div class="container">
+
                             {{ form_start(form) }}
                             <div class="row">
-                                <div class="col-md-4">{{ form_row(form.code) }}</div>
-                                <div class="col-md-4">{{ form_row(form.command) }}</div>
-
-                                <div class="col-md-4" >{{ form_row(form.submit) }}</div>
+                                <div class="col-md-3">{{ form_row(form.code) }}</div>
+                                <div class="col-md-3">{{ form_row(form.command) }}</div>
+                                <div class="col-md-3">{{ form_row(form.name) }}</div>
+                                <div class="col-md-3">{{ form_row(form.actif) }}</div>
+                                <div class="col-md-3">{{ form_row(form.submit) }}</div>
                             </div>
                             {{ form_end(form) }}
                             <br>
 
-                        </div>
                     </div>
                     <br><br><br><br>
                     <div class="navigation">
@@ -373,8 +362,9 @@
                                 <thead style="background-color:lightgreen">
                                 <tr style="color:white">
                                     <th >Code</th>
+                                    <th>Nom</th>
 
-                                    <th>Expression</th>
+                                    <th>Expression cron</th>
 
                                     <th>Actif</th>
                                     <th>Etat</th>
@@ -386,7 +376,7 @@
                                 {% for j in jobCron %}
                                     <tr>
                                         <td><a href="{{ path('app_JobCron_show', {'id':j.id}) }}">{{ j.code }}</a></td>
-
+                                        <th>{{ j.name }}</th>
                                         <td>{{ j.expression }}</td>
 
                                         <td> {% if(j.actif == 1) %}
