@@ -1,0 +1,12 @@
+services:
+  BatchJobs\BatchJobsBundle\Controller\AdminController:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Form\AdminType:
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Command\CommandePrincipale:
+    #    arguments:
+    #      - "@messenger.bus.default"
+    tags: [console.command]
