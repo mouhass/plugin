@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping\Entity;
 /**
  * @Entity
  * @InheritanceType("SINGLE_TABLE")
- * @DiscriminatorMap({"job" = "Job", "jobCron" = "JobCron","jobComposite" = "JobComposite"})
  * @ORM\Entity(repositoryClass=JobRepository::class)
  */
 class Job
