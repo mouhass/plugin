@@ -68,9 +68,9 @@ class CommandePrincipale extends Command
            if($hello2[$x]->nextDateCron($hello2[$x]->getExpression())==$ActuDate and $hello2[$x]->getActif()==true) {
                for ($y = 0; $y < count($lesSousJobs); $y++) {
                    if ($y != count($lesSousJobs) - 1) {
-                       $message = new LogCommand($lesSousJobs[$y]->getScriptExec(), $lesSousJobs[$y]->getId(), strval($hello2[$x]->getNumerocomposite()), "0");
+                       $message = new LogCommand($lesSousJobs[$y]->getScriptExec(), $lesSousJobs[$y]->getId(), strval($hello2[$x]->getCode()), "0");
                    } else {
-                       $message = new LogCommand($lesSousJobs[$y]->getScriptExec(), $lesSousJobs[$y]->getId(), strval($hello2[$x]->getNumerocomposite()), "1");
+                       $message = new LogCommand($lesSousJobs[$y]->getScriptExec(), $lesSousJobs[$y]->getId(), strval($hello2[$x]->getCode()), "1");
                    }
                    $this->bus->dispatch($message);
                    $hello2[$x]->setState("en cours");

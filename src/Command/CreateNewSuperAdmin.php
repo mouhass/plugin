@@ -52,5 +52,7 @@ class CreateNewSuperAdmin extends Command
         $this->manager->persist($admin);
         $this->manager->flush();
         $output->write("un super admin a été créé avec succès");
+
+    return(1);
     }
 }

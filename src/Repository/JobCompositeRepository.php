@@ -45,7 +45,7 @@ class JobCompositeRepository extends ServiceEntityRepository
 
     public function findByCode(string $name){
         return $this->createQueryBuilder('a')
-            ->andWhere('a.numerocomposite = :val')
+            ->andWhere('a.code = :val')
             ->setParameter('val', $name)
             ->getQuery()
             ->getOneOrNullResult();
@@ -57,30 +57,111 @@ class JobCompositeRepository extends ServiceEntityRepository
     public function findSpecific(JobCompositeSearch $search):Query
     {
         $query = $this->findVisibleQuery();
-        if ($search->getCodecomposite() and $search->getCodecomposite() != "") {
-            $query = $query->where('a.codecomposite = :codecomposite')
-                ->setParameter('codecomposite', $search->getCodecomposite());
+        if ($search->getCode() and $search->getCode() != "") {
+            $query = $query->where('a.code = :code')
+                ->setParameter('code', $search->getCode());
         }
-//        if($search->getName() and $search->getName()!=""and $search->getNameSousJob() and $search->getNameSousJob()!="")
-//        {
-//            $query = $query->where('a.name = :name ')
-//                ->where($query->expr()->like('a.listSousJobs',':sousJob') )
-//                ->setParameter('name',$search->getName())
-//                ->setParameter('sousJob',$search->getNameSousJob());
-//            $query->join('a.listSousJobs','al');
-//
-//
-//        }
+
         if ($search->getExpression() and $search->getExpression() != "") {
             $query = $query->where('a.expression = :expression')
                 ->setParameter('expression', $search->getExpression());
         }
-        if($search->getCodecomposite()!="" and $search->getExpression()!=""){
-            $query = $query->where('a.expression = :expression and a.codecomposite = :codecomposite')
 
-                ->setParameter('expression', $search->getExpression())
-                ->setParameter('codecomposite', $search->getCodecomposite());
+        if ($search->getActif() and $search->getActif() != "") {
+            $query = $query->where('a.actif = :actif')
+                ->setParameter('actif', $search->getActif());
         }
+        if ($search->getName() and $search->getName() != "") {
+            $query = $query->where('a.name like :name')
+                ->setParameter('name', '%'.$search->getName().'%');
+        }
+
+
+
+        if($search->getCode()!="" and $search->getActif()!=""){
+            $query->where('a.code = :code  and a.actif = :actif ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('actif',$search->getActif());
+        }
+
+        if($search->getExpression()!="" and $search->getActif()!=""){
+            $query->where('a.expression = :expression  and a.actif = :actif ')
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('actif',$search->getActif());
+        }
+
+        if($search->getCode()!="" and $search->getName()!=""){
+            $query->where('a.code = :code  and a.name like :name ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+        if($search->getExpression()!="" and $search->getName()!=""){
+            $query->where('a.expression = :expression  and a.name like :name ')
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+        if($search->getExpression()!="" and $search->getCode()!=""){
+            $query->where('a.expression = :expression  and a.code = :code ')
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('code', $search->getCode());
+        }
+        if($search->getActif()!="" and $search->getName()!=""){
+            $query->where('a.actif = :actif  and a.name like :name ')
+                ->setParameter('actif',$search->getActif())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+
+
+
+
+        if($search->getCode()!="" and $search->getExpression()!="" and $search->getName()!=""){
+            $query->where('a.code = :code and a.expression = :expression  and a.name like :name ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+
+
+
+
+
+        if($search->getActif()!="" and $search->getExpression()!="" and $search->getName()!=""){
+            $query->where('a.actif = :actif and a.expression = :expression  and a.name like :name ')
+                ->setParameter('actif',$search->getActif())
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+        if($search->getActif()!="" and $search->getCode()!="" and $search->getName()!=""){
+            $query->where('a.actif = :actif and a.code = :code  and a.name like :name ')
+                ->setParameter('actif',$search->getActif())
+                ->setParameter('code',$search->getCode())
+                ->setParameter('name','%'.$search->getName().'%');
+        }
+
+
+
+        if($search->getCode()!="" and $search->getExpression()!="" and $search->getActif()!=""){
+            $query->where('a.code = :code and a.expression = :expression  and a.actif = :actif ')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('actif',$search->getActif());
+        }
+
+
+        if($search->getCode()!="" and $search->getExpression()!="" and $search->getName()!="" and $search->getActif()>=0 and $search->getActif()<=1){
+            $query->where('a.code = :code and a.expression = :expression and a.actif = :actif and a.name like :name')
+                ->setParameter('code',$search->getCode())
+                ->setParameter('expression',$search->getExpression())
+                ->setParameter('name','%'.$search->getName().'%')
+                ->setParameter('actif',$search->getActif());
+        }
+
+
+
         return $query->getQuery();
 
     }

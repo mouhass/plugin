@@ -18,7 +18,7 @@ class JobCompositeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('codecomposite',TextType::class)
+            ->add('code',TextType::class)
             ->add('name',TextType::class)
             ->add('state',TextType::class)
             ->add('actif',TextType::class)

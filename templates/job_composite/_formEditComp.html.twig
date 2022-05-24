@@ -7,7 +7,10 @@
     <div class="well">
         {{ form_start(form) }}
         <legend><i  aria-hidden="true"></i> Code du job composite</legend>
-        <div>{{ form_widget(form.codecomposite) }}</div>
+        <div>{{ job_composite.code }}</div>
+        <legend><i  aria-hidden="true"></i> Desscriptio du job composite</legend>
+        <div>{{ form_widget(form.description) }}</div>
+
         <legend><i  aria-hidden="true"></i> Nom du job composite</legend>
         <div>{{ form_widget(form.name) }}</div>
         <legend><i  aria-hidden="true"></i> Etat du job composite</legend>
@@ -28,5 +31,6 @@
 
         <br>
         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        <a class="btn btn-warning" href="{{ path('app_job_composite_index') }}" >Retour</a>
         {{ form_end(form) }}
     </div></div>

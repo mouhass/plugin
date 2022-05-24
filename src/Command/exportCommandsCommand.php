@@ -63,13 +63,13 @@ class exportCommandsCommand extends Command
 
             // $output->writeln("wow wow");
             // $myfile = fopen("webdictionary.txt", "r");
-            $output->writeln("wow wow");
+
             $log = "command name: app:exportAdmin  state: success  execution date" . ' - ' . date("F j, Y, G:i") . PHP_EOL .
                 "-------------------------" . PHP_EOL;
             if ($input->getArgument('code_job_composite') == "0") {
-                file_put_contents($this->kernel->getProjectDir() . '/var/log/exportAdmin_succes' . date("y-m-d-G-i-s") . '.log', $log, FILE_APPEND);
+                file_put_contents($this->kernel->getProjectDir() . '/var/log/exportCommand_succes' . date("y-m-d-G-i-s") . '.log', $log, FILE_APPEND);
             } else {
-                file_put_contents($this->kernel->getProjectDir() . '/var/log/exportAdmin_succes_' . $input->getArgument('code_job_composite') . date("y-m-d-G-i-s") . '.log', $log, FILE_APPEND);
+                file_put_contents($this->kernel->getProjectDir() . '/var/log/ExportCommand_succes_' . $input->getArgument('code_job_composite') . date("y-m-d-G-i-s") . '.log', $log, FILE_APPEND);
                 //file_put_contents($this->kernel->getProjectDir() .  $input->getArgument('code_job_composite')  . '.log', $log, FILE_APPEND);
             }
 
@@ -98,7 +98,7 @@ class exportCommandsCommand extends Command
 
 
                 //une partie de création d'historique
-                $structCommand->ajoutHistoriqueSucces($input,$jobCron);
+                $structCommand->ajoutHistoriqueSucces($input,$jobCron,'/var/log/ExportCommand_succes_');
                 //une partie de changement d'état
                 $jobCron->setState('Succès');
                 $this->manager->persist($jobCron);
@@ -121,9 +121,9 @@ class exportCommandsCommand extends Command
             $log = "command name: app:saywow  state: error  error date" . ' - ' . date("F j, Y, G:i") . PHP_EOL .
                 "error description : ".$exception.
                 "-------------------------" . PHP_EOL;
-            file_put_contents($this->kernel->getProjectDir() . '/var/log/exportAdmin_error' . date("y-m-d-G-i-s") . '.log', $log, FILE_APPEND);
+            file_put_contents($this->kernel->getProjectDir() . '/var/log/exportCommand_error' . date("y-m-d-G-i-s") . '.log', $log, FILE_APPEND);
             //une partie d'ajout d'historique dans le cas d'erreur
-            $structCommand->ajoutHistoriqueError($input,$jobCron,'exportAdmin');
+            $structCommand->ajoutHistoriqueError($input,$jobCron,'exportCommand');
             if($input->getArgument('code_job_composite')=="0") {
                 $structCommand->EnvoyerEmailErrorCron($jobCron);
             }

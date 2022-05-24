@@ -38,11 +38,6 @@ class Admin implements UserInterface,\Serializable
 
 
 
-    /**
-     * @ORM\ManyToMany(targetEntity=JobComposite::class, mappedBy="listDestination")
-     */
-    private $jobCompositeCreated;
-
 
 
     /**
@@ -54,8 +49,6 @@ class Admin implements UserInterface,\Serializable
 
     public function __construct()
     {
-        $this->jobCrons = new ArrayCollection();
-        $this->jobComposites = new ArrayCollection();
 
 
     }

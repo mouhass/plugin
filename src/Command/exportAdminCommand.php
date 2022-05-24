@@ -98,7 +98,7 @@ class exportAdminCommand extends Command
 
 
             //une partie de création d'historique
-            $structCommand->ajoutHistoriqueSucces($input,$jobCron);
+            $structCommand->ajoutHistoriqueSucces($input,$jobCron,'/var/log/exportAdmin_succes_');
             //une partie de changement d'état
             $jobCron->setState('Succès');
             $this->manager->persist($jobCron);

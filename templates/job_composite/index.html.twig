@@ -314,18 +314,19 @@
                     <!-- Earnings (Monthly) Card Example -->
 
                     <div  style="width: 100%">
-                                <div class="container">
+
                                     {{ form_start(form) }}
                                     <div class="row">
-                                        <div class="col-md-4">{{ form_row(form.codecomposite) }}</div>
-                                        <div class="col-md-4">{{ form_row(form.expression) }}</div>
-
-                                        <div class="col-md-4" >{{ form_row(form.submit) }}</div>
+                                        <div class="col-md-3">{{ form_row(form.code) }}</div>
+                                        <div class="col-md-3">{{ form_row(form.expression) }}</div>
+                                        <div class="col-md-3">{{ form_row(form.name) }}</div>
+                                        <div class="col-md-3">{{ form_row(form.actif) }}</div>
+                                        <div class="col-md-3" >{{ form_row(form.submit) }}</div>
                                     </div>
                                     {{ form_end(form) }}
                                     <br>
 
-                                </div>
+
                     </div>
                             <br><br><br><br>
                             <div class="navigation">
@@ -345,7 +346,7 @@
                                 <tbody>
                                 {% for job_composite in job_composites %}
                                     <tr>
-                                        <td><a href="{{ path('app_job_composite_show',{'id':job_composite.id}) }}">{{ job_composite.codecomposite }}</a></td>
+                                        <td><a href="{{ path('app_job_composite_show',{'id':job_composite.id}) }}">{{ job_composite.code }}</a></td>
                                         <td>{{ job_composite.name }}</td>
                                         <td>{{ job_composite.expression }}</td>
 

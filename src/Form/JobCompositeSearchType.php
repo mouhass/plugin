@@ -15,8 +15,13 @@ class JobCompositeSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codecomposite',TextType::class,['required'=>false,
+            ->add('code',TextType::class,['required'=>false,
                 'label'=>false, 'attr'=>['placeholder'=>'Le code']])
+
+            ->add('name',TextType::class,['required'=>false,
+                'label'=>false, 'attr'=>['placeholder'=>'Le nom']])
+            ->add('actif',TextType::class,['required'=>false,
+                'label'=>false, 'attr'=>['placeholder'=>'actif']])
             ->add('expression', TextType::class,['required'=>false,
                 'label'=>false, 'attr'=>['placeholder'=>'La fréquence ']])
 

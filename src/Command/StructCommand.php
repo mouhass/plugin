@@ -26,11 +26,11 @@ class StructCommand
     $this->kernel = $kernel;
     }
 
-    public function ajoutHistoriqueSucces(InputInterface $input,JobCron $jobCron){
+    public function ajoutHistoriqueSucces(InputInterface $input,JobCron $jobCron,string $nomfichier){
         $historique = new Historique();
         $historique->setCreatedAt(new \DateTime());
         if ($input->getArgument('code_job_composite') == "0") {$historique->setPath('/var/log/saywow_succes' . date("y-m-d-G-i-s") . '.log');}
-        else {$historique->setPath('/var/log/saywow_succes' . $input->getArgument('code_job_composite') . date("y-m-d-G-i-s") . '--' . $input->getArgument('dernier_Sous_Job') . '.log');}
+        else {$historique->setPath( $nomfichier . $input->getArgument('code_job_composite') . date("y-m-d-G-i-s") . '.log');}
         $historique->setJobCronHist($jobCron);
         $historique->setState("Succès");
         $this->manager->persist($historique);
@@ -75,7 +75,7 @@ class StructCommand
 
     public function EnvoyerEmailErrorComposite(JobComposite $jobComposite,JobCron $jobCron){
         $email = new MailerController();
-        $email->sendEmail($this->mailer, "Une erreur dans l'exécution du job composite dont le numero  est ".$jobComposite->getCodecomposite()." dans le sous job qui possède la commande ".$jobCron->getScriptExec()." et le numéro " . $jobCron->getCode());
+        $email->sendEmail($this->mailer, "Une erreur dans l'exécution du job composite dont le numero  est ".$jobComposite->getCode()." dans le sous job qui possède la commande ".$jobCron->getScriptExec()." et le numéro " . $jobCron->getCode());
     }
 
     public function EnvoyerEmailErrorCron(JobCron $jobCron){
