@@ -40,7 +40,7 @@ class JobCompositeController extends AbstractController
         $form->handleRequest($request);
 
         $jobComposite = $paginator->paginate($jobCompositeRepository->findSpecific($search), $request->query->getInt('page',1),4);
-        return $this->render('job_composite/index.html.twig', [
+        return $this->render('@batchJobs/job_composite/index.html.twig', [
             'job_composites' => $jobComposite,
             'form'=>$form->createView()
         ]);
@@ -64,7 +64,7 @@ class JobCompositeController extends AbstractController
             return $this->redirectToRoute('app_job_composite_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('job_composite/new.html.twig', [
+        return $this->render('@batchJobs/job_composite/new.html.twig', [
             'job_composite' => $jobComposite,
             'form' => $form->createView(),
         ]);
@@ -72,7 +72,7 @@ class JobCompositeController extends AbstractController
 
     public function show(JobComposite $jobComposite): Response
     {
-        return $this->render('job_composite/show.html.twig', [
+        return $this->render('@batchJobs/job_composite/show.html.twig', [
             'job_composite' => $jobComposite,
         ]);
     }
@@ -91,7 +91,7 @@ class JobCompositeController extends AbstractController
             return $this->redirectToRoute('app_job_composite_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('job_composite/edit.html.twig', [
+        return $this->render('@batchJobs/job_composite/edit.html.twig', [
             'job_composite' => $jobComposite,
             'form' => $form->createView(),
         ]);

@@ -17,7 +17,7 @@ class AdminController extends AbstractController
 
     public function index(AdminRepository $adminRepository): Response
     {
-        return $this->render('admin/index.html.twig', [
+        return $this->render('@batchJobs/admin/index.html.twig', [
             'admins' => $adminRepository->findAll(),
         ]);
     }
@@ -37,7 +37,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/new.html.twig', [
+        return $this->render('@batchJobs/admin/new.html.twig', [
             'admin' => $admin,
             'form' => $form->createView(),
         ]);
@@ -48,7 +48,7 @@ class AdminController extends AbstractController
 //     */
 //    public function show(Admin $admin): Response
 //    {
-//        return $this->render('admin/show.html.twig', [
+//        return $this->render('@batchJobs/admin/show.html.twig', [
 //            'admin' => $admin,
 //        ]);
 //    }
@@ -63,8 +63,7 @@ class AdminController extends AbstractController
             $adminRepository->add($admin);
             return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
         }
-
-        return $this->render('admin/edit.html.twig', [
+        return $this->render('@batchJobs/admin/edit.html.twig', [
             'admin' => $admin,
             'form' => $form->createView(),
         ]);

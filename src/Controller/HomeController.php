@@ -16,7 +16,7 @@ class HomeController extends AbstractController
 
      public function index(Request $request,JobCronRepository $jobCronRepository, JobCompositeRepository $compositeRepository){
 
-         return $this->render('tous.html.twig',
+         return $this->render('@batchJobs/tous.html.twig',
          ['nbreJobCronError'=> $jobCronRepository->calculateJobCronErr(),
 
              'nbreJobCompositeError'=>$compositeRepository->calculateJobCompErr(),

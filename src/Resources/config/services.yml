@@ -1,5 +1,46 @@
 services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+#  BatchJobs\BatchJobsBundle\:
+#    resource: '/../../src/*'
+#    exclude: 'src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+  # controllers are imported separately to make sure services can be injected
+  # as action arguments even if you don't extend any base controller class
+  BatchJobs\BatchJobsBundle\Controller\:
+    resource: '../src/Controller'
+    tags: [ 'controller.service_arguments' ]
+    
   BatchJobs\BatchJobsBundle\Controller\AdminController:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Controller\SecurityController:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Repository\AdminRepository:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Repository\JobCronRepository:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Repository\JobCompositeRepository:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Repository\HistoriqueRepository:
+    public: true
+    autowire: true
+
+  BatchJobs\BatchJobsBundle\Repository\JobRepository:
     public: true
     autowire: true
 
@@ -9,4 +50,6 @@ services:
   BatchJobs\BatchJobsBundle\Command\CommandePrincipale:
     #    arguments:
     #      - "@messenger.bus.default"
+    public: true
+    autowire: true
     tags: [console.command]

@@ -16,7 +16,7 @@ class HistoriqueController extends AbstractController
 
     public function index(HistoriqueRepository $historiqueRepository): Response
     {
-        return $this->render('historique/index.html.twig', [
+        return $this->render('@batchJobs/historique/index.html.twig', [
             'historiques' => $historiqueRepository->findAll(),
         ]);
     }
@@ -33,7 +33,7 @@ class HistoriqueController extends AbstractController
             return $this->redirectToRoute('app_historique_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('historique/new.html.twig', [
+        return $this->render('@batchJobs/historique/new.html.twig', [
             'historique' => $historique,
             'form' => $form->createView(),
         ]);
@@ -42,7 +42,7 @@ class HistoriqueController extends AbstractController
 
     public function show(Historique $historique): Response
     {
-        return $this->render('historique/show.html.twig', [
+        return $this->render('@batchJobs/historique/show.html.twig', [
             'historique' => $historique,
         ]);
     }
@@ -58,7 +58,7 @@ class HistoriqueController extends AbstractController
             return $this->redirectToRoute('app_historique_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('historique/edit.html.twig', [
+        return $this->render('@batchJobs/historique/edit.html.twig', [
             'historique' => $historique,
             'form' => $form->createView(),
         ]);

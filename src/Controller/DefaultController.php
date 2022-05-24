@@ -18,7 +18,7 @@ class DefaultController extends AbstractController
 
         $message2 = new LogMessage('Bonjour je suis le message numero 2');
         $bus->dispatch($message2);
-        return $this->render('default/index.html.twig', [
+        return $this->render('@batchJobs/default/index.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
     }

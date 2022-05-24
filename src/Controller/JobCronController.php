@@ -46,7 +46,7 @@ class JobCronController extends AbstractController
         $jobCron = $paginator->paginate($jobCronRepository->findSpecific($search), $request->query->getInt('page',1),4);
 
 
-        return $this->render('JobCron/index.html.twig', [
+        return $this->render('@batchJobs/JobCron/index.html.twig', [
             'jobCron' => $jobCron,
             'form'=> $form->createView()
         ]);
@@ -73,7 +73,7 @@ class JobCronController extends AbstractController
             return $this->redirectToRoute('app_jobCron_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('JobCron/new.html.twig', [
+        return $this->render('@batchJobs/JobCron/new.html.twig', [
             'admin' => $jobCron,
             'form' => $form->createView(),
         ]);
@@ -83,7 +83,7 @@ class JobCronController extends AbstractController
     public function show(JobCron $jobCron): Response
     {
        // $jobCron = $this->jobCronRepo->findElementById('secondJobCron');
-        return $this->render('JobCron/show.html.twig', [
+        return $this->render('@batchJobs/JobCron/show.html.twig', [
             'JobCron' => $jobCron,
         ]);
     }
@@ -105,7 +105,7 @@ class JobCronController extends AbstractController
             return $this->redirectToRoute('app_jobCron_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('JobCron/edit.html.twig', [
+        return $this->render('@batchJobs/JobCron/edit.html.twig', [
             'JobCron' => $jobCron,
             'form' => $form->createView(),
         ]);
