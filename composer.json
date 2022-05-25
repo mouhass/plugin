@@ -25,7 +25,7 @@
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",
         "symfony/flex": "^1.2",
-        "symfony/framework-bundle": "4.4.*",
+        "symfony/framework-bundle": "^4.4 || ^5.1",
         "symfony/google-mailer": "4.4.*",
         "symfony/proxy-manager-bridge": "4.4.*",
         "symfony/security-bundle": "4.4.*",
