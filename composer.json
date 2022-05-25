@@ -24,15 +24,15 @@
         "symfony/asset": "4.4.*",
         "symfony/console": "^3.4|^4.0|^5.0",
         "symfony/dotenv": "^4.4 || ^5.2",
-        "symfony/flex": "^1.7",
+        "symfony/flex": "^1.7 || ^1.8",
 		"symfony/asset": "^4.4|^5.3|^6.0",
         "symfony/framework-bundle": "^4.4 || ^5.1",
-        "symfony/google-mailer": "4.4.*",
+        "symfony/google-mailer": "4.4.* || ^5.4",
         "symfony/proxy-manager-bridge": "4.4.*",
         "symfony/security-bundle": "^3.4 || ^4.4 || ^5.1",
         "symfony/twig-bundle": "^3.4 || ^4.4 || ^5.1",
         "symfony/yaml": "^3.4 || ^4.4 || ^5.1",
-        "symfony/messenger": "^4.4 || ^5.1"
+        "symfony/messenger": "^4.4 || ^5.*"
     },
 	
 	 "repositories": [
