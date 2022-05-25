@@ -18,7 +18,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^1.6 || ^2.0",
-        "doctrine/doctrine-migrations-bundle": "^3.0",
+        "doctrine/doctrine-migrations-bundle": "^2.0 || ^3.0",
         "doctrine/orm": "^2.5",
         "knplabs/knp-paginator-bundle": "^5.8",
         "symfony/asset": "4.4.*",
