@@ -28,7 +28,7 @@
 		"symfony/asset": "^4.4|^5.3|^6.0",
         "symfony/framework-bundle": "^4.4 || ^5.1",
         "symfony/google-mailer": "4.4.* || ^5.4",
-        "symfony/proxy-manager-bridge": "4.4.*",
+        "symfony/proxy-manager-bridge": "4.4.* || ^5.4",
         "symfony/security-bundle": "^3.4 || ^4.4 || ^5.1",
         "symfony/twig-bundle": "^3.4 || ^4.4 || ^5.1",
         "symfony/yaml": "^3.4 || ^4.4 || ^5.1",
