@@ -22,7 +22,7 @@
         "doctrine/orm": "^2.5",
         "knplabs/knp-paginator-bundle": "^5.8",
         "symfony/asset": "4.4.*",
-        "symfony/console": "4.4.*",
+        "symfony/console": "^3.4|^4.0|^5.0",
         "symfony/dotenv": "4.4.*",
         "symfony/flex": "^1.2",
 		"symfony/asset": "^4.4|^5.3|^6.0",
