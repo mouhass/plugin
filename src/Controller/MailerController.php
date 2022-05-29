@@ -10,11 +10,11 @@ use Symfony\Component\Mime\Email;
 class MailerController extends AbstractController
 {
 
-    public function sendEmail(MailerInterface $mailer,String $sthing): Response
+    public function sendEmail(MailerInterface $mailer,String $sthing, string $to): Response
     {
         $email = (new Email())
             ->from('hello@example.com')
-            ->to('hassine.mounir1234@gmail.com')
+            ->to($to)
             ->subject("Erreur dans l'exécution d'un job")
             ->text($sthing)
             ->html($sthing);

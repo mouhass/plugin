@@ -1,107 +1,9 @@
-{#{% extends 'base.html.twig' %}#}
 
-{#{% block title %}JobComposite index{% endblock %}#}
-
-{#{% block body %}#}
-{#    <h1>JobComposite index</h1>#}
-{#    <div class="jumbotron" >#}
-{#        <div class="container">#}
-{#            {{ form_start(form) }}#}
-{#            <div class="row">#}
-{#                <div class="col-md-4">{{ form_row(form.numerocomposite) }}</div>#}
-{#                <div class="col-md-4">{{ form_row(form.expression) }}</div>#}
-{#                <div class="col-md-4">{{ form_row(form.nameSousJob) }}</div>#}
-{#                <div class="col-md-4">{{ form_row(form.submit) }}</div>#}
-{#            </div>#}
-{#            {{ form_end(form) }}#}
-{#            <br>#}
-{#            <a href="{{ path('app_job_composite_new') }}" class="btn btn-success">Create new</a>#}
-
-{#        </div>#}
-
-{#    </div>#}
-{#    <br>#}
-{#    <div class="navigation">#}
-{#        {{ knp_pagination_render(job_composites) }}#}
-{#    </div>#}
-{#    <table class="table">#}
-{#        <thead>#}
-{#            <tr>#}
-{#                <th>Numero</th>#}
-{#                <th>Description</th>#}
-{#                <th>Etat</th>#}
-{#                <th>Actif</th>#}
-{#                <th>Expression</th>#}
-{#                <th>Liste sous jobs</th>#}
-{#                <th>Actions</th>#}
-{#                <th>Télécharger log</th>#}
-{#            </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#        {% for job_composite in job_composites %}#}
-{#            <tr>#}
-{#                <td>{{ job_composite.numeroComposite }}</td>#}
-{#                <td>{{ job_composite.name }}</td>#}
-{#                <td>{{ job_composite.state }}</td>#}
-{#                <td> {% if(job_composite.actif == 1) %}#}
-{#                        <a class="btn btn-warning" href="{{ path("app_JobComposite_actifdesactif", {'id':job_composite.id}) }}" >#}
-{#                            Activé#}
-
-{#                        </a>#}
-{#                    {% else %}#}
-{#                        <a class="btn btn-danger" href="{{ path("app_JobComposite_actifdesactif", {'id':job_composite.id}) }}">Désactivé</a>#}
-{#                    {% endif %}#}
-{#                </td>#}
-
-{#                <td>{{ job_composite.expression}}</td>#}
-{#                <td>{{ job_composite.listSousJobs ? job_composite.listSousJobs|join(', ') : '' }}</td>#}
-{#                <td>#}
-{#                    <a href="{{ path('app_JobComposite_execute', {'id':job_composite.id}) }}"class="btn btn-success">Execute immediately</a>#}
-{#                    <a href="{{ path('app_job_composite_edit', {'id': job_composite.id}) }}" class="btn btn-secondary">edit</a>#}
-{#                    <a href="{{ path('app_job_composite_delete' ,{'id': job_composite.id}) }}" class="btn btn-danger">Delete</a>#}
-{#                </td>#}
-{#                <td>#}
-{#                    {% for jobCron in job_composite.listSousJobs %}#}
-{#                        {% if(jobCron.actif) %}#}
-{#                        <a href="{{ path('app_JobCron_edit', {'id':jobCron.id}) }}" target="_blank" style="color:blue" >{{ jobCron.numero }}</a>#}
-{#                        {% else %}#}
-{#                            <a href="{{ path('app_JobCron_edit', {'id':jobCron.id}) }}" target="_blank" style="color:red" >{{ jobCron.numero }}</a>#}
-{#                        {% endif %}#}
-{#                            <a href="{{ path('app_JobCron_downloadFiles', {'id':jobCron.id}) }}" class="btn btn-warning pull-right">Download</a> <br><br>#}
-
-{#                    {% endfor %}#}
-{#                </td>#}
-
-{#            </tr>#}
-{#        {% else %}#}
-{#            <tr>#}
-{#                <td colspan="7">no records found</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}
-{#        </tbody>#}
-{#    </table>#}
-
-{#    <div class="navigation">#}
-{#        {{ knp_pagination_render(job_composites) }}#}
-{#    </div>#}
-{#{% endblock %}#}
-{#{% block javascripts %}#}
-{#    <script>#}
-{#        window.setInterval('refresh()', 30000);#}
-{#        // Call a function every 10000 milliseconds#}
-{#        // (OR 10 seconds).#}
-
-{#        // Refresh or reload page.#}
-{#        function refresh() {#}
-{#            window .location.reload();#}
-{#        }#}
-{#    </script>#}
-{#{% endblock %}#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content="">
-    <title>Page d'accueil</title>
+    <title>Batch jobs</title>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/batchjobs/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -117,7 +19,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('Home') }}">
 
-            <div class="sidebar-brand-text mx-3">Page d'accueil</div>
+            <div class="sidebar-brand-text mx-3">Batch jobs</div>
         </a>
 
         <!-- Divider -->
@@ -317,11 +219,11 @@
 
                                     {{ form_start(form) }}
                                     <div class="row">
-                                        <div class="col-md-3">{{ form_row(form.code) }}</div>
-                                        <div class="col-md-3">{{ form_row(form.expression) }}</div>
-                                        <div class="col-md-3">{{ form_row(form.name) }}</div>
-                                        <div class="col-md-3">{{ form_row(form.actif) }}</div>
-                                        <div class="col-md-3" >{{ form_row(form.submit) }}</div>
+                                        <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.code) }}</div>
+                                        <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.expression) }}</div>
+                                        <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.name) }}</div>
+                                        <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.actif) }}</div>
+                                        <div class="col-md-3 h3 mb-0 text-gray-800" >{{ form_row(form.submit) }}</div>
                                     </div>
                                     {{ form_end(form) }}
                                     <br>

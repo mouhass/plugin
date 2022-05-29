@@ -7,13 +7,13 @@
         <div class="well">
             {{ form_start(form) }}
             <legend><i aria-hidden="true"></i> Nom de l'administrateur</legend>
-                <div >{{ form_widget(form.name) }}</div>
+                <div class="h3 mb-0 text-gray-800">{{ form_widget(form.name) }}</div>
             <br><br>
             <legend><i  aria-hidden="true"></i> Mot de passe</legend>
-            <div>{{ form_widget(form.password) }}</div>
+            <div class="h3 mb-0 text-gray-800">{{ form_widget(form.password) }}</div>
             <br><br>
             <legend><i  aria-hidden="true"></i> Email </legend>
-            <div >{{ form_widget(form.email) }}</div>
+            <div class="h3 mb-0 text-gray-800" >{{ form_widget(form.email) }}</div>
            <br><br>
             <button class="btn btn-success">{{ button_label|default('Save') }}</button>
             <a class="btn btn-warning" href="{{ path('app_admin_index') }}">Retour</a>

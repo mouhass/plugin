@@ -1,48 +1,9 @@
-{#{% extends 'base.html.twig' %}#}
 
-{#{% block title %}Admin index{% endblock %}#}
-
-{#{% block body %}#}
-{#    <h1>Admin index</h1>#}
-
-{#    <table class="table">#}
-{#        <thead>#}
-{#            <tr>#}
-{#                <th>Id</th>#}
-{#                <th>Name</th>#}
-{#                <th>Password</th>#}
-{#                <th>Email</th>#}
-{#                <th>actions</th>#}
-{#            </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#        {% for admin in admins %}#}
-{#            <tr>#}
-{#                <td>{{ admin.id }}</td>#}
-{#                <td>{{ admin.name }}</td>#}
-{#                <td>{{ admin.password }}</td>#}
-{#                <td>{{ admin.email }}</td>#}
-{#                <td>#}
-{#                    <a href="{{ path('app_admin_show', {'id': admin.id}) }}">show</a>#}
-{#                    <a href="{{ path('app_admin_edit', {'id': admin.id}) }}">edit</a>#}
-{#                </td>#}
-{#            </tr>#}
-{#        {% else %}#}
-{#            <tr>#}
-{#                <td colspan="5">no records found</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}
-{#        </tbody>#}
-{#    </table>#}
-{#     {% if app.user.username == "demo" and app.user.password == "demo" %}#}
-{#    <a href="{{ path('app_admin_new') }}">Create new</a>#}
-{#    {% endif %}#}
-{#{% endblock %}#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content="">
-    <title>Page d'accueil</title>
+    <title>Batch Jobs</title>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/batchjobs/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -58,7 +19,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('Home') }}">
 
-            <div class="sidebar-brand-text mx-3">Page d'accueil</div>
+            <div class="sidebar-brand-text mx-3">Batch jobs</div>
         </a>
 
         <!-- Divider -->
@@ -206,7 +167,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user ? app.user.username : 'anonymous'}}</span>
                             <img class="img-profile rounded-circle"
-                                 src="../img/undraw_profile.svg">
+                                 src="{{ asset('bundles/batchjobs/img/undraw_profile.svg') }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

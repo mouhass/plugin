@@ -58,6 +58,13 @@ class JobCompositeController extends AbstractController
         $jobComposite->setCode(uniqid());
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $listSousJobs = $jobComposite->getListSousJobs();
+            for($i=0;$i<count($listSousJobs);$i++)
+            {
+                $listSousJobs[$i]->setEmailadmincron($listSousJobs->getEmailAdmin().";".$jobComposite->getEmailadmin() );
+            }
+
             $entityManager->persist($jobComposite);
             $entityManager->flush();
 
@@ -84,6 +91,13 @@ class JobCompositeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $listSousJobs = $jobComposite->getListSousJobs();
+            for($i=0;$i<count($listSousJobs);$i++)
+            {
+                $listSousJobs[$i]->setEmailadmincron(  $listSousJobs[$i]->getEmailadmincron().";".$jobComposite->getEmailadmin());
+            }
+
             $em=$manager;
             $em->persist($jobComposite);
             $em->flush();

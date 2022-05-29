@@ -63,7 +63,7 @@ class exportCommandsCommand extends Command
 
             // $output->writeln("wow wow");
             // $myfile = fopen("webdictionary.txt", "r");
-
+            sleep(70);
             $log = "command name: app:exportAdmin  state: success  execution date" . ' - ' . date("F j, Y, G:i") . PHP_EOL .
                 "-------------------------" . PHP_EOL;
             if ($input->getArgument('code_job_composite') == "0") {
@@ -87,16 +87,10 @@ class exportCommandsCommand extends Command
                     $data = [$record->getName(),$record->getExpression(),$record->getActif()]; // false for the shallow conversion
                     fputcsv($csvh, $data, $d, $e);
                 }
-
                 fclose($csvh);
-
-
-
                 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 //%%%%%%%%%% ici se termine le traitement
                 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
                 //une partie de création d'historique
                 $structCommand->ajoutHistoriqueSucces($input,$jobCron,'/var/log/ExportCommand_succes_');
                 //une partie de changement d'état

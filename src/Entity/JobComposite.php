@@ -115,6 +115,7 @@ class JobComposite extends Job
     {
         $this->emailadmin = $emailadmin;
 
+
         return $this;
     }
 }

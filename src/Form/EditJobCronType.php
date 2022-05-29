@@ -21,7 +21,7 @@ class EditJobCronType extends AbstractType
             ->add('expression', TextType::class,['required'=>false])
             ->add('state',TextType::class,['required'=>false])
             ->add('actif',TextType::class,['required'=>false])
-            //->add('listDestination',EntityType::class,['class' => Admin::class,'multiple'=>true])
+            ->add('emailAdminCron',TextType::class,['required'=>false])
 //            ->add('nextDateExec',DateTimeType::class,['required'=>false])
             ->add('scriptExec',TextType::class)
 

@@ -15,7 +15,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content="">
-    <title>Page d'accueil</title>
+    <title>Batch jobs</title>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/batchjobs/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('Home') }}">
 
-            <div class="sidebar-brand-text mx-3">Page d'accueil</div>
+            <div class="sidebar-brand-text mx-3">Batch jobs</div>
         </a>
 
         <!-- Divider -->
@@ -179,7 +179,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user ? app.user.username : 'anonymous'}}</span>
                             <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                                 src="{{ asset('bundles/batchjobs/img/undraw_profile.svg') }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -214,7 +214,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Administrateurs</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Modifier un administrateur</h1>
                 </div>
 
                 <!-- Content Row -->

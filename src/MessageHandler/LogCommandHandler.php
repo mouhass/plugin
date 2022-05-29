@@ -17,10 +17,20 @@ class LogCommandHandler  implements MessageHandlerInterface
 
     public function __invoke(LogCommand $command)
     {
-        echo "test 2";
-        sleep(10);
-        exec("php bin/console ".$command->getNameCommand()." ".$command->getIdJobCron().' '.$command->getCodeCommand().' '.$command->getDernierSousJob());
-       echo "finished";
+        if($command->getNameCommand()!= "list") {
+            echo "start";
+            sleep(10);
+            exec("php bin/console " . $command->getNameCommand() . " " . $command->getIdJobCron() . ' ' . $command->getCodeCommand() . ' ' . $command->getDernierSousJob());
+
+            echo "finished";
+
+        }
+        else{
+            echo "start";
+            sleep(10);
+            exec("php bin/console list");
+            echo "finish";
+        }
 
     }
 }

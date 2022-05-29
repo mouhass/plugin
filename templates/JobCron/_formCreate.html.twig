@@ -7,19 +7,19 @@
     <div class="well">
         {{ form_start(form) }}
         <legend><i  aria-hidden="true"></i> Description du job cron</legend>
-        <div style="width: 50% ;height:10%">{{ form_widget(form.description) }}</div>
+        <div  class="h3 mb-0 text-gray-800">{{ form_widget(form.description) }}</div>
         <legend><i  aria-hidden="true"></i> Nom du job cron</legend>
-        <div style="width: 50% ;height:10%">{{ form_widget(form.name) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.name) }}</div>
 
         <legend><i  aria-hidden="true"></i> Expression cron</legend>
-        <div>{{ form_widget(form.expression) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.expression) }}</div>
         <legend><i  aria-hidden="true"></i> Email destinataire</legend>
-        <div>{{ form_widget(form.emailadmincron) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.emailadmincron) }}</div>
 
         <legend><i  aria-hidden="true"></i> La commande à exécuter </legend>
-        <div>{{ form_widget(form.scriptExec) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.scriptExec) }}</div>
         <legend><i  aria-hidden="true"></i> Le créateur </legend>
-        <div>{{ app.user.username }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ app.user.username }}</div>
         <br>
         <button class="btn btn-success">{{ button_label|default('Save') }}</button>
         <a class="btn btn-warning" href="{{ path('app_jobCron_index') }}">Retour</a>

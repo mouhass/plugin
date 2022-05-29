@@ -117,7 +117,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content="">
-    <title>Page d'accueil</title>
+    <title>Batch jobs</title>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/batchjobs/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -133,7 +133,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('Home') }}">
 
-            <div class="sidebar-brand-text mx-3">Page d'accueil</div>
+            <div class="sidebar-brand-text mx-3">Batch jobs</div>
         </a>
 
         <!-- Divider -->
@@ -344,11 +344,11 @@
 
                             {{ form_start(form) }}
                             <div class="row">
-                                <div class="col-md-3">{{ form_row(form.code) }}</div>
-                                <div class="col-md-3">{{ form_row(form.command) }}</div>
-                                <div class="col-md-3">{{ form_row(form.name) }}</div>
-                                <div class="col-md-3">{{ form_row(form.actif) }}</div>
-                                <div class="col-md-3">{{ form_row(form.submit) }}</div>
+                                <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.code) }}</div>
+                                <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.command) }}</div>
+                                <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.name) }}</div>
+                                <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.actif) }}</div>
+                                <div class="col-md-3 h3 mb-0 text-gray-800">{{ form_row(form.submit) }}</div>
                             </div>
                             {{ form_end(form) }}
                             <br>

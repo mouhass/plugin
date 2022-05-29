@@ -7,25 +7,25 @@
     <div class="well">
         {{ form_start(form) }}
         <legend><i  aria-hidden="true"></i> Code du job composite</legend>
-        <div>{{ job_composite.code }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ job_composite.code }}</div>
         <legend><i  aria-hidden="true"></i> Desscriptio du job composite</legend>
-        <div>{{ form_widget(form.description) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.description) }}</div>
 
         <legend><i  aria-hidden="true"></i> Nom du job composite</legend>
-        <div>{{ form_widget(form.name) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.name) }}</div>
         <legend><i  aria-hidden="true"></i> Etat du job composite</legend>
-        <div>{{ form_widget(form.state) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.state) }}</div>
         <legend><i  aria-hidden="true"></i> Actif</legend>
-        <div>{{ form_widget(form.actif) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.actif) }}</div>
 
         <legend><i aria-hidden="true"></i> Expression</legend>
-        <div>{{ form_widget(form.expression) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.expression) }}</div>
         <legend><i  aria-hidden="true"></i> Email du destinataire</legend>
-        <div>{{ form_widget(form.emailadmin) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.emailadmin) }}</div>
         <legend><i  aria-hidden="true"></i> Liste des sous jobs </legend>
-        <div>{{ form_widget(form.listSousJobs) }}</div>
+        <div class="h3 mb-0 text-gray-800">{{ form_widget(form.listSousJobs) }}</div>
         <legend><i  aria-hidden="true"></i> Le créateur </legend>
-        <div>
+        <div class="h3 mb-0 text-gray-800">
             {{ app.user.name }}
         </div>
 

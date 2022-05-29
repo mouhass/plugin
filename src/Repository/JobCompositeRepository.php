@@ -57,108 +57,38 @@ class JobCompositeRepository extends ServiceEntityRepository
     public function findSpecific(JobCompositeSearch $search):Query
     {
         $query = $this->findVisibleQuery();
-        if ($search->getCode() and $search->getCode() != "") {
-            $query = $query->where('a.code = :code')
-                ->setParameter('code', $search->getCode());
-        }
-
-        if ($search->getExpression() and $search->getExpression() != "") {
-            $query = $query->where('a.expression = :expression')
-                ->setParameter('expression', $search->getExpression());
-        }
-
-        if ($search->getActif() and $search->getActif() != "") {
-            $query = $query->where('a.actif = :actif')
-                ->setParameter('actif', $search->getActif());
-        }
-        if ($search->getName() and $search->getName() != "") {
-            $query = $query->where('a.name like :name')
-                ->setParameter('name', '%'.$search->getName().'%');
-        }
 
 
-
-        if($search->getCode()!="" and $search->getActif()!=""){
-            $query->where('a.code = :code  and a.actif = :actif ')
-                ->setParameter('code',$search->getCode())
-                ->setParameter('actif',$search->getActif());
+        $command =" ";
+        if($search->getCode()!="")
+        {
+            $command .= $command != " " ? " and a.code = :code " : " a.code = :code ";
+            $query->setParameter('code', $search->getCode());
         }
 
-        if($search->getExpression()!="" and $search->getActif()!=""){
-            $query->where('a.expression = :expression  and a.actif = :actif ')
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('actif',$search->getActif());
-        }
+        if($search->getExpression()!="")
+        {
+            $command .= $command != " " ? " and  a.expression = :expression " : " a.expression = :expression " ;
+            $query->setParameter('expression', $search->getExpression());
 
-        if($search->getCode()!="" and $search->getName()!=""){
-            $query->where('a.code = :code  and a.name like :name ')
-                ->setParameter('code',$search->getCode())
-                ->setParameter('name','%'.$search->getName().'%');
         }
+        if($search->getName()!="")
+        {
+            $command .= $command != " " ? " and  a.name like :name " : " a.name like :name " ;
+            $query->setParameter('name', '%'.$search->getName().'%');
 
-        if($search->getExpression()!="" and $search->getName()!=""){
-            $query->where('a.expression = :expression  and a.name like :name ')
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('name','%'.$search->getName().'%');
         }
-        if($search->getExpression()!="" and $search->getCode()!=""){
-            $query->where('a.expression = :expression  and a.code = :code ')
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('code', $search->getCode());
-        }
-        if($search->getActif()!="" and $search->getName()!=""){
-            $query->where('a.actif = :actif  and a.name like :name ')
-                ->setParameter('actif',$search->getActif())
-                ->setParameter('name','%'.$search->getName().'%');
+        if(!is_null($search->getActif())){
+            $command .= $command != " " ? " and a.actif = :actif " : " a.actif = :actif ";
+            $query->setParameter('actif', $search->getActif());
         }
 
 
 
 
 
-        if($search->getCode()!="" and $search->getExpression()!="" and $search->getName()!=""){
-            $query->where('a.code = :code and a.expression = :expression  and a.name like :name ')
-                ->setParameter('code',$search->getCode())
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('name','%'.$search->getName().'%');
-        }
-
-
-
-
-
-
-        if($search->getActif()!="" and $search->getExpression()!="" and $search->getName()!=""){
-            $query->where('a.actif = :actif and a.expression = :expression  and a.name like :name ')
-                ->setParameter('actif',$search->getActif())
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('name','%'.$search->getName().'%');
-        }
-
-        if($search->getActif()!="" and $search->getCode()!="" and $search->getName()!=""){
-            $query->where('a.actif = :actif and a.code = :code  and a.name like :name ')
-                ->setParameter('actif',$search->getActif())
-                ->setParameter('code',$search->getCode())
-                ->setParameter('name','%'.$search->getName().'%');
-        }
-
-
-
-        if($search->getCode()!="" and $search->getExpression()!="" and $search->getActif()!=""){
-            $query->where('a.code = :code and a.expression = :expression  and a.actif = :actif ')
-                ->setParameter('code',$search->getCode())
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('actif',$search->getActif());
-        }
-
-
-        if($search->getCode()!="" and $search->getExpression()!="" and $search->getName()!="" and $search->getActif()>=0 and $search->getActif()<=1){
-            $query->where('a.code = :code and a.expression = :expression and a.actif = :actif and a.name like :name')
-                ->setParameter('code',$search->getCode())
-                ->setParameter('expression',$search->getExpression())
-                ->setParameter('name','%'.$search->getName().'%')
-                ->setParameter('actif',$search->getActif());
-        }
+        if($command !=" "){
+            $query->where($command);}
 
 
 

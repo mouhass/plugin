@@ -16,7 +16,7 @@ class JobCron extends Job
      */
      private $scriptExec;
      /**
-      * @ORM\OneToMany(targetEntity=Historique::class, mappedBy="jobCronHist")
+      * @ORM\OneToMany(targetEntity=Historique::class, mappedBy="jobCronHist", orphanRemoval=true)
       */
      private $historiques;
 
@@ -35,6 +35,7 @@ class JobCron extends Job
      * @ORM\Column(type="string", length=255)
      */
     private $emailadmincron;
+
 
 
      public function __construct()

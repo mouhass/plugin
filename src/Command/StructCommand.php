@@ -7,6 +7,7 @@ use BatchJobs\BatchJobsBundle\Entity\JobCron;
 use BatchJobs\BatchJobsBundle\Repository\JobCronRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Type;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -74,12 +75,18 @@ class StructCommand
     }
 
     public function EnvoyerEmailErrorComposite(JobComposite $jobComposite,JobCron $jobCron){
-        $email = new MailerController();
-        $email->sendEmail($this->mailer, "Une erreur dans l'exécution du job composite dont le numero  est ".$jobComposite->getCode()." dans le sous job qui possède la commande ".$jobCron->getScriptExec()." et le numéro " . $jobCron->getCode());
+       $listEmail = explode(";", $jobCron->getEmailadmincron());
+        for($i=0; $i<count($listEmail);$i++) {
+            $email = new MailerController();
+            $email->sendEmail($this->mailer, "Une erreur dans l'exécution du job composite dont le numero  est " . $jobComposite->getCode() . " dans le sous job qui possède la commande " . $jobCron->getScriptExec() . " et le numéro " . $jobCron->getCode(), $listEmail[$i]);
+        }
     }
 
     public function EnvoyerEmailErrorCron(JobCron $jobCron){
-        $email = new MailerController();
-        $email->sendEmail($this->mailer, "Une erreur dans l'exécution du job cron dont la commande est app:saywow et le numéro " . $jobCron->getCode());
+        $listEmail = explode(";", $jobCron->getEmailadmincron());
+        for($i=0; $i<count($listEmail);$i++) {
+            $email = new MailerController();
+            $email->sendEmail($this->mailer, "Une erreur dans l'exécution du job cron dont la commande est app:saywow et le numéro ". $jobCron->getCode(),$listEmail[$i]);
+        }
     }
 }

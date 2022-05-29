@@ -34,7 +34,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content="">
-    <title>Page d'accueil</title>
+    <title>Batch jobs</title>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/batchjobs/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -50,7 +50,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('Home') }}">
 
-            <div class="sidebar-brand-text mx-3">Page d'accueil</div>
+            <div class="sidebar-brand-text mx-3">Batch jobs</div>
         </a>
 
         <!-- Divider -->
@@ -246,15 +246,24 @@
                             <legend><i  aria-hidden="true"></i> Le code du job cron</legend>
                             <h1 class="h3 mb-0 text-gray-800" >{{ JobCron.code }}</h1>
                             <br><br>
-                            <legend><i  aria-hidden="true"></i> La description</legend>
+                            <legend><i  aria-hidden="true"></i> La description du job</legend>
+                            <div class="card"><div class="card-body">{{ JobCron.description }}</div></div>
+                            <br><br>
+                            <legend><i  aria-hidden="true"></i> Le nom du job</legend>
                             <div class="card"><div class="card-body">{{ JobCron.name }}</div></div>
                             <br><br>
+
+
                             <legend><i  aria-hidden="true"></i> La fréquence d'exécution </legend>
                             <div class="card"><div class="card-body">{{ JobCron.expression }}</div></div>
                             <br><br>
                             <legend><i  aria-hidden="true"></i> La commande à exécuter </legend>
                             <div class="card"><div class="card-body">{{ JobCron.scriptExec }}</div></div>
                             <br><br>
+                            <legend><i  aria-hidden="true"></i>Les emails des administrateurs </legend>
+                            <div class="card"><div class="card-body">{{ JobCron.emailAdminCron }}</div></div>
+                            <br><br>
+
 {#                            <a href="{{ path('app_JobCron_downloadFiles',{'id':JobCron.id}) }}" class="btn btn-success">Log</a>#}
                             <table class="table">
                                 <thead>
@@ -290,7 +299,13 @@
                         <div class=" col " style="text-align: right" >
                                 <a  href="{{ path('app_JobCron_execute', {'id':JobCron.id}) }}" class="btn btn-success">Exécuter immédiatement</a>
                                 <a href="{{ path('app_JobCron_edit',{'id':JobCron.id}) }}" class="btn btn-warning">Modifier</a>
+                            {% if JobCron.jobcomposites| length>0 %}
+                                <a  class="btn btn-danger" data-toggle="modal" data-target="#supprimer">Supprimer
+
+                                </a>
+                            {% else %}
                                 <a href="{{ path('app_JobCron_delete', {'id':JobCron.id}) }}" class="btn btn-danger">Supprimer</a>
+                            {% endif %}
                             <br><br>
                             <a href="{{ path('app_jobCron_index') }}" class="btn btn-info" style="width: 50%">Retour</a>
                         </div>
@@ -324,6 +339,25 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="{{ path('logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="supprimer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Attention de cette suppression</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Ce job cron est déjà utilisé dans au moins un job composite</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="{{ path('app_JobCron_delete', {'id':JobCron.id}) }}">Supprimer</a>
             </div>
         </div>
     </div>
