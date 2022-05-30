@@ -63,3 +63,8 @@ services:
     autowire: true
   BatchJobs\BatchJobsBundle\Form\Type\CreateNewJobCronType:
     autowire: true
+  BatchJobs\BatchJobsBundle\Controller\JobCompositeController:
+    public: true
+    autowire: true
+
+
