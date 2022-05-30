@@ -21,11 +21,8 @@
         "doctrine/doctrine-migrations-bundle": "^2.0 || ^3.0",
         "doctrine/orm": "^2.5",
         "knplabs/knp-paginator-bundle": "^5.8",
-<<<<<<< HEAD
         "dragonmantank/cron-expression": "^3.3",
-=======
         "sensio/framework-extra-bundle": "^3.0|^4.0|^5.0|^6.0",
->>>>>>> cc79a817576c1e3304ccaa246eedc755e3e25c05
         "symfony/console": "^3.4|^4.0|^5.0",
         "symfony/dotenv": "^4.4 || ^5.2",
         "symfony/flex": "^1.2 || ^1.7 || ^1.8",
