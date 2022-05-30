@@ -21,7 +21,14 @@ class CreateNewJobCronType extends AbstractType
             ->add('expression', TextType::class,['required'=>false])
             ->add('emailadmincron',TextType::class,['required'=>false])
 //            ->add('nextDateExec',DateTimeType::class,['required'=>false])
-            ->add('listSousJobs',EntityType::class,['class'=>JobCron::class,'multiple'=>true ])
+            ->add(
+                            'scriptExec',
+                            CommandChoiceType::class,
+                            [
+                                'label' => 'detail.command',
+                                'required' => true,
+                            ]
+                        )
 
         ;
     }
