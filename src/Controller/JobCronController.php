@@ -65,7 +65,6 @@ class JobCronController extends AbstractController
 
        // $user = $this->getUser()->getUsername();
 
-        $jobCron->setEmailadmincron($user->getUsername());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $jobCronRepository->add($jobCron);
