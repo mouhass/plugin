@@ -115,4 +115,11 @@ class JobCompositeRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    public function remove(JobComposite $jobComposite, bool $flush = true): void
+    {
+        $this->_em->remove($jobComposite);
+        $this->_em->flush();
+    }
+
+
 }

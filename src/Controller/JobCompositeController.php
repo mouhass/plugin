@@ -112,13 +112,9 @@ class JobCompositeController extends AbstractController
     }
 
 
-    public function delete(Request $request, JobComposite $jobComposite, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, JobComposite $jobComposite, JobCompositeRepository $jobCompositeRepository): Response
     {
-//        if ($this->isCsrfTokenValid('delete'.$jobComposite->getId(), $request->request->get('_token'))) {
-//            $entityManager->remove($jobComposite);
-//            $entityManager->flush();
-//        }
-
+        $jobCompositeRepository->remove($jobComposite);
         return $this->redirectToRoute('app_job_composite_index', [], Response::HTTP_SEE_OTHER);
     }
 
