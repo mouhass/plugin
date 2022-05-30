@@ -53,3 +53,13 @@ services:
     public: true
     autowire: true
     tags: [console.command]
+  BatchJobs\BatchJobsBundle\Service\CommandParser:
+    arguments:
+      - "@kernel"
+
+  BatchJobs\BatchJobsBundle\Form\Type\AdminType:
+    autowire: true
+  BatchJobs\BatchJobsBundle\Form\Type\CommandChoiceType:
+    autowire: true
+  BatchJobs\BatchJobsBundle\Form\Type\CreateNewJobCronType:
+    autowire: true
