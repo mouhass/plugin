@@ -15,11 +15,23 @@ class AdminType extends AbstractType
     {
         $builder
             ->add('name')
-        ->add('password',   PasswordType::class,
-            ['required'=>false]
-
-        )
-
+            ->add('password', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options'  => [
+                    'label' => false,
+                    'attr' => [
+                        'class' => 'h3 mb-0 text-gray-800',
+                        'placeholder' => 'mot de passe'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => false,
+                    'attr' => [
+                        'class' => 'h3 mb-0 text-gray-800',
+                        'placeholder' => 'répéter mot de passe'
+                    ]
+                ],
+            ))
             ->add('email')
         ;
     }
